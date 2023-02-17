@@ -1,0 +1,12 @@
+﻿@model Departamento
+
+<h1>Detalles del departamento</h1>
+
+
+<div class="card" style="width: 40%;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Nombre</h5>
+        <p class="card-text">Localidad: @Model.Localidad</p>
+        <a asp-controller="Departamentos" asp-action="Index" class="btn btn-danger">Come back</a>
+    </div>
+</div>

@@ -1,6 +1,15 @@
+using _13_MvcCoreCrudDepartamentosEF.Data;
+using _13_MvcCoreCrudDepartamentosEF.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+string connectionString = builder.Configuration.GetConnectionString("SqlHospital");
+builder.Services.AddTransient<RepositoryDepartamento>();
+builder.Services.AddDbContext<DepartamentosContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -22,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Departamentos}/{action=Index}/{id?}");
 
 app.Run();
